@@ -32,7 +32,7 @@ public fun timestamp_ms(clock: &Clock): u64
 
 ```move
 // Entry function receives Clock as immutable reference
-public entry fun attack(
+entry fun attack(
     entity: &mut Entity,
     clock: &Clock,
     ctx: &mut TxContext,
@@ -92,7 +92,7 @@ Random (shared singleton at 0x8)
 ```move
 use sui::random::{Random, RandomGenerator};
 
-public entry fun roll_dice(
+entry fun roll_dice(
     r: &Random,       // pass singleton 0x8
     ctx: &mut TxContext,
 ) {
@@ -136,13 +136,13 @@ gen.generate_bytes(num_bytes: u16): vector<u8>
 
 1. **Randomness must be consumed in an `entry` function** — don't expose `RandomGenerator` through `public` functions
 2. **Don't make randomness-dependent transfers conditional** — always transfer the result, even if it's a "loss"
-3. **Use `entry` (not `public entry`)** where possible to prevent composability attacks
+entry`)** where possible to prevent composability attacks
 4. **Test with `random::create_for_testing(ctx)`**
 
 ### Engine Pattern: Combat Rolls
 
 ```move
-public entry fun attack(
+entry fun attack(
     attacker: &mut Entity,
     defender: &mut Entity,
     r: &Random,

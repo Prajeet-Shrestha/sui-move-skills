@@ -18,7 +18,7 @@
 Both can be called from transactions, but:
 - `public` functions can also be called from other Move modules
 - `entry` functions can **only** be called from transactions (cannot be composed in Move)
-- A function can be both: `public entry fun` (callable from both)
+- A function can be both: `entry fun` (callable from both)
 
 **Convention**: Prefer `public` for composability. Use `entry` only when a function should never be called from other Move code (e.g., admin-only setup functions).
 

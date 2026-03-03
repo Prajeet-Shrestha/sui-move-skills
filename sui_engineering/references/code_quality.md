@@ -84,8 +84,8 @@ public struct HealthKey has copy, drop, store {}
 // ✅ PREFER: public fun — composable, usable in PTBs, can return values
 public fun mint(ctx: &mut TxContext): NFT { ... }
 
-// ❌ AVOID: public entry — entry modifier is redundant for public funs
-public entry fun mint_item(ctx: &mut TxContext) { ... }
+// ❌ AVOID: entry — entry modifier is redundant for public funs
+entry fun mint_item(ctx: &mut TxContext) { ... }
 
 // ✅ OK: entry (non-public) — when you want to prevent composability
 entry fun consume_random(r: &Random, ctx: &mut TxContext) { ... }

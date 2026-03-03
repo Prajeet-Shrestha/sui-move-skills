@@ -168,13 +168,13 @@ public fun assert_version(config: &GameConfig) {
 }
 
 // Every entry function checks version
-public entry fun play(config: &GameConfig, ...) {
+entry fun play(config: &GameConfig, ...) {
     assert_version(config);
     // ... game logic
 }
 
 // Migration function for upgrades
-public entry fun migrate(config: &mut GameConfig, cap: &UpgradeCap) {
+entry fun migrate(config: &mut GameConfig, cap: &UpgradeCap) {
     assert!(config.version == CURRENT_VERSION - 1, ENotMigratable);
     config.version = CURRENT_VERSION;
     // ... apply data migrations
